@@ -1,4 +1,4 @@
-package b.physics;
+package bensadon.physics;
 public class Force
 {
     private double x;
