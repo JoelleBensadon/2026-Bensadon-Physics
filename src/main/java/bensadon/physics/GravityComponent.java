@@ -8,6 +8,9 @@ public class GravityComponent extends JComponent {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        int height = getHeight();
+        g.translate(0, height);
+
         // g.drawLine(0, 0, getWidth(), getHeight());
         // g.drawOval(30, 45, 20, 20);
         // g.fillOval(0, 0, 20, 20);
@@ -33,7 +36,8 @@ public class GravityComponent extends JComponent {
             x = x + scaledF1.x();
             y = y + scaledF1.y();
 
-            g.fillOval((int) x, (int) y, 3, 3);
+            g.fillOval((int) x, (int) -y, 3, 3);
+
         }
     }
 }
