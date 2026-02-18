@@ -3,11 +3,9 @@ package bensadon.physics;
 import javax.swing.*;
 import java.awt.*;
 
-public class GravityComponent extends JComponent
-{
+public class GravityComponent extends JComponent {
     @Override
-    protected void paintComponent(Graphics g)
-    {
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         // g.drawLine(0, 0, getWidth(), getHeight());
@@ -24,8 +22,7 @@ public class GravityComponent extends JComponent
         double x = 0;
         double y = 0;
 
-        for (double t = 0; t <= 5; t += 0.001)
-        {
+        for (double t = 0; t <= 5; t += 0.001) {
             // add gravity to f1
             f1 = f1.add(scaledGravity);
 
@@ -33,8 +30,8 @@ public class GravityComponent extends JComponent
             Force scaledF1 = f1.scale(0.001);
 
             // update x and y using the scaled force
-            x = x + scaledF1.getX();
-            y = y + scaledF1.getY();
+            x = x + scaledF1.x();
+            y = y + scaledF1.y();
 
             g.fillOval((int) x, (int) y, 3, 3);
         }
