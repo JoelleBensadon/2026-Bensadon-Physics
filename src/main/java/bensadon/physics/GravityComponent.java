@@ -30,11 +30,11 @@ public class GravityComponent extends JComponent
             f1 = f1.add(scaledGravity);
 
             // scale f1 by 0.001
-            Force scaled_f1 = f1.scale(0.001);
+            Force scaledF1 = f1.scale(0.001);
 
             // update x and y using the scaled force
-            x = x + scaled_f1.getX();
-            y = y + scaled_f1.getY();
+            x = x + scaledF1.getX();
+            y = y + scaledF1.getY();
 
             g.fillOval((int) x, (int) y, 3, 3);
         }
