@@ -15,29 +15,39 @@ public class GravityFrame extends JFrame {
 
         JTextField xField = new JTextField("37.0365");
         JTextField yField = new JTextField("28.9360");
+        JTextField timeField = new JTextField("5");
 
         GravityComponent gravityComponent = new GravityComponent();
         JButton button = new JButton("Draw");
+
+        JLabel infoLabel = new JLabel("Angle:  , Magnitude:  ");
+
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gravityComponent.setForce(
-                        new Force(
-                                Double.parseDouble(xField.getText()),
-                                Double.parseDouble(yField.getText())
-                        )
+                Force f = new Force(
+                        Double.parseDouble(xField.getText()),
+                        Double.parseDouble(yField.getText())
                 );
-
+                gravityComponent.setForce(f);
+                gravityComponent.setTime(Double.parseDouble(timeField.getText()));
+                infoLabel.setText("Angle: " + f.getDegrees() + "  Magnitude: " + f.getMagnitude());
             }
         });
-
         JPanel northPanel = new JPanel();
+        northPanel.add(new JLabel("ForceX"));
         northPanel.add(xField);
+
+        northPanel.add(new JLabel("ForceY"));
         northPanel.add(yField);
+
+        northPanel.add(new JLabel("Time"));
+        northPanel.add(timeField);
+
         northPanel.add(button);
+        northPanel.add(infoLabel);
+
         add(northPanel, BorderLayout.NORTH);
-
-
         add(gravityComponent, BorderLayout.CENTER);
     }
 
