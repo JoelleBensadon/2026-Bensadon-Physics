@@ -20,7 +20,8 @@ public class GravityFrame extends JFrame {
         GravityComponent gravityComponent = new GravityComponent();
         JButton button = new JButton("Draw");
 
-        JLabel infoLabel = new JLabel("Angle:  , Magnitude:  ");
+        JLabel angleLabel = new JLabel("Angle: ");
+        JLabel magnitudeLabel = new JLabel("Magnitude: ");
 
         button.addActionListener(new ActionListener() {
             @Override
@@ -31,7 +32,8 @@ public class GravityFrame extends JFrame {
                 );
                 gravityComponent.setForce(f);
                 gravityComponent.setTime(Double.parseDouble(timeField.getText()));
-                infoLabel.setText("Angle: " + f.getDegrees() + "  Magnitude: " + f.getMagnitude());
+                angleLabel.setText("Angle: " + f.getDegrees());
+                magnitudeLabel.setText("Magnitude: " + f.getMagnitude());
             }
         });
         JPanel northPanel = new JPanel();
@@ -45,7 +47,8 @@ public class GravityFrame extends JFrame {
         northPanel.add(timeField);
 
         northPanel.add(button);
-        northPanel.add(infoLabel);
+        northPanel.add(angleLabel);
+        northPanel.add(magnitudeLabel);
 
         add(northPanel, BorderLayout.NORTH);
         add(gravityComponent, BorderLayout.CENTER);
