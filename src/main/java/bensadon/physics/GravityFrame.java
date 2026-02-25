@@ -2,6 +2,8 @@ package bensadon.physics;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GravityFrame extends JFrame {
     public GravityFrame() {
@@ -10,7 +12,46 @@ public class GravityFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         setLayout(new BorderLayout());
-        add(new GravityComponent(), BorderLayout.CENTER);
+
+        JTextField xField = new JTextField("37.0365");
+        JTextField yField = new JTextField("28.9360");
+        JTextField timeField = new JTextField("5");
+
+        GravityComponent gravityComponent = new GravityComponent();
+        JButton button = new JButton("Draw");
+
+        JLabel angleLabel = new JLabel("Angle: ");
+        JLabel magnitudeLabel = new JLabel("Magnitude: ");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Force f = new Force(
+                        Double.parseDouble(xField.getText()),
+                        Double.parseDouble(yField.getText())
+                );
+                gravityComponent.setForce(f);
+                gravityComponent.setTime(Double.parseDouble(timeField.getText()));
+                angleLabel.setText("Angle: " + f.getDegrees());
+                magnitudeLabel.setText("Magnitude: " + f.getMagnitude());
+            }
+        });
+        JPanel northPanel = new JPanel();
+        northPanel.add(new JLabel("ForceX"));
+        northPanel.add(xField);
+
+        northPanel.add(new JLabel("ForceY"));
+        northPanel.add(yField);
+
+        northPanel.add(new JLabel("Time"));
+        northPanel.add(timeField);
+
+        northPanel.add(button);
+        northPanel.add(angleLabel);
+        northPanel.add(magnitudeLabel);
+
+        add(northPanel, BorderLayout.NORTH);
+        add(gravityComponent, BorderLayout.CENTER);
     }
 
     public static void main(String[] args) {
