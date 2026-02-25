@@ -2,8 +2,7 @@ package bensadon.physics;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class GravityFrame extends JFrame {
     public GravityFrame() {
@@ -18,10 +17,56 @@ public class GravityFrame extends JFrame {
         JTextField timeField = new JTextField("5");
 
         GravityComponent gravityComponent = new GravityComponent();
-        JButton button = new JButton("Draw");
-
         JLabel angleLabel = new JLabel("Angle: ");
         JLabel magnitudeLabel = new JLabel("Magnitude: ");
+        gravityComponent.addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                Force force = new Force(e.getX(), gravityComponent.getHeight() - e.getY());
+                xField.setText(String.valueOf(force.x()));
+                yField.setText(String.valueOf(force.y()));
+                gravityComponent.setForce(force);
+                angleLabel.setText("Angle: " + force.getDegrees());
+                magnitudeLabel.setText("Magnitude: " + force.getMagnitude());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        gravityComponent.addMouseMotionListener(new MouseMotionListener() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                Force force = new Force(e.getX(), gravityComponent.getHeight() - e.getY());
+                xField.setText(String.valueOf(force.x()));
+                yField.setText(String.valueOf(force.y()));
+                gravityComponent.setForce(force);
+                angleLabel.setText("Angle: " + force.getDegrees());
+                magnitudeLabel.setText("Magnitude: " + force.getMagnitude());
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+
+            }
+        });
+
+        JButton button = new JButton("Draw");
+
 
         button.addActionListener(new ActionListener() {
             @Override
