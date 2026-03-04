@@ -12,24 +12,27 @@ public class GravityFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
+        final JLabel xLabel = new JLabel("Force x");
         JTextField xField = new JTextField("37.0365");
+        final JLabel yLabel = new JLabel("Force y");
         JTextField yField = new JTextField("28.9360");
+        final JLabel timeLabel = new JLabel("Force time");
         JTextField timeField = new JTextField("5");
 
         GravityComponent gravityComponent = new GravityComponent();
         JLabel angleLabel = new JLabel("Angle: ");
         JLabel magnitudeLabel = new JLabel("Magnitude: ");
+
+        GravityController gravityController = new GravityController(
+                gravityComponent, xField, yField, angleLabel, magnitudeLabel
+        );
+
         gravityComponent.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                Force force = new Force(e.getX(), gravityComponent.getHeight() - e.getY());
-                xField.setText(String.valueOf(force.x()));
-                yField.setText(String.valueOf(force.y()));
-                gravityComponent.setForce(force);
-                angleLabel.setText("Angle: " + force.getDegrees());
-                magnitudeLabel.setText("Magnitude: " + force.getMagnitude());
+                gravityController.updateForce(e.getX(), gravityComponent.getHeight() - e.getY());
             }
 
             @Override
@@ -51,12 +54,7 @@ public class GravityFrame extends JFrame {
         gravityComponent.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                Force force = new Force(e.getX(), gravityComponent.getHeight() - e.getY());
-                xField.setText(String.valueOf(force.x()));
-                yField.setText(String.valueOf(force.y()));
-                gravityComponent.setForce(force);
-                angleLabel.setText("Angle: " + force.getDegrees());
-                magnitudeLabel.setText("Magnitude: " + force.getMagnitude());
+                gravityController.updateForce(e.getX(), gravityComponent.getHeight() - e.getY());
             }
 
             @Override
