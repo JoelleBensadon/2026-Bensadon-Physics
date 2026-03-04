@@ -24,7 +24,7 @@ public class GravityFrame extends JFrame {
         JLabel magnitudeLabel = new JLabel("Magnitude: ");
 
         GravityController gravityController = new GravityController(
-                gravityComponent, xField, yField, angleLabel, magnitudeLabel
+                gravityComponent, xField, yField, timeField, angleLabel, magnitudeLabel
         );
 
         gravityComponent.addMouseListener(new MouseListener() {
@@ -73,7 +73,6 @@ public class GravityFrame extends JFrame {
                         Double.parseDouble(xField.getText()),
                         Double.parseDouble(yField.getText())
                 );
-                gravityComponent.setTime(Double.parseDouble(timeField.getText()));
             }
         });
         JPanel northPanel = new JPanel();
