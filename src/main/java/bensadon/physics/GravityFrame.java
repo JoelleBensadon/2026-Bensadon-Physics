@@ -73,6 +73,7 @@ public class GravityFrame extends JFrame {
                         Double.parseDouble(xField.getText()),
                         Double.parseDouble(yField.getText())
                 );
+                gravityComponent.setTime(Double.parseDouble(timeField.getText()));
             }
         });
         JPanel northPanel = new JPanel();
