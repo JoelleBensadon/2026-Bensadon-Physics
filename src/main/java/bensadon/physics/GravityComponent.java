@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GravityComponent extends JComponent {
-    public Force force = new Force(37.0365, 28.9360);
-    public double time = 5;
+    private Force force = new Force(37.0365, 28.9360);
+    private double time = 5;
 
     public void setForce(Force force) {
         this.force = force;

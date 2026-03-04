@@ -1,5 +1,7 @@
 package bensadon.physics;
 
+import java.util.Objects;
+
 public record Force(double x, double y) {
 
     public double getDegrees() {
@@ -34,4 +36,15 @@ public record Force(double x, double y) {
         return "x: " + x + ", y: " + y + ", magnitude: " + getMagnitude() + ", degrees: " + getDegrees();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Force force = (Force) o;
+        return Double.compare(x, force.x) == 0 && Double.compare(y, force.y) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
 }
