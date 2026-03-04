@@ -3,11 +3,11 @@ package bensadon.physics;
 import javax.swing.*;
 
 public class GravityController {
-    GravityComponent gravityComponent;
-    JTextField xField;
-    JTextField yField;
-    JLabel angleLabel;
-    JLabel magnitudeLabel;
+    private final GravityComponent gravityComponent;
+    private final JTextField xField;
+    private final JTextField yField;
+    private final JLabel angleLabel;
+    private final JLabel magnitudeLabel;
 
     public GravityController(GravityComponent gravityComponent,
                              JTextField xField,

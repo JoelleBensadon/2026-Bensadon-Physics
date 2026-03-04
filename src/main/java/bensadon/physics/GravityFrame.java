@@ -69,14 +69,10 @@ public class GravityFrame extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Force f = new Force(
+                gravityController.updateForce(
                         Double.parseDouble(xField.getText()),
                         Double.parseDouble(yField.getText())
                 );
-                gravityComponent.setForce(f);
-                gravityComponent.setTime(Double.parseDouble(timeField.getText()));
-                angleLabel.setText("Angle: " + f.getDegrees());
-                magnitudeLabel.setText("Magnitude: " + f.getMagnitude());
             }
         });
         JPanel northPanel = new JPanel();
