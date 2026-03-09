@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class GravityFrame extends JFrame {
+
     public GravityFrame() {
         setSize(300, 400);
         setTitle("Gravity Frames");
@@ -22,9 +23,10 @@ public class GravityFrame extends JFrame {
         GravityComponent gravityComponent = new GravityComponent();
         JLabel angleLabel = new JLabel("Angle: ");
         JLabel magnitudeLabel = new JLabel("Magnitude: ");
+        JLabel apexLabel = new JLabel("Apex: ");
 
         GravityController gravityController = new GravityController(
-                gravityComponent, xField, yField, timeField, angleLabel, magnitudeLabel
+                gravityComponent, xField, yField, timeField, angleLabel, magnitudeLabel, apexLabel
         );
 
         gravityComponent.addMouseListener(new MouseListener() {
@@ -88,9 +90,27 @@ public class GravityFrame extends JFrame {
         northPanel.add(button);
         northPanel.add(angleLabel);
         northPanel.add(magnitudeLabel);
+        northPanel.add(apexLabel);
 
         add(northPanel, BorderLayout.NORTH);
         add(gravityComponent, BorderLayout.CENTER);
+
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    gravityComponent.repaint();
+                    try {
+                        Thread.sleep(16);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     public static void main(String[] args) {

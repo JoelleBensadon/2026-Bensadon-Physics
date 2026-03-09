@@ -9,6 +9,7 @@ public class GravityController {
     private final JTextField timeField;
     private final JLabel angleLabel;
     private final JLabel magnitudeLabel;
+    private final JLabel apexLabel;
 
 
     public GravityController(GravityComponent gravityComponent,
@@ -16,13 +17,15 @@ public class GravityController {
                              JTextField yField,
                              JTextField timeField,
                              JLabel angleLabel,
-                             JLabel magnitudeLabel) {
+                             JLabel magnitudeLabel,
+                             JLabel apexLabel) {
         this.gravityComponent = gravityComponent;
         this.xField = xField;
         this.yField = yField;
         this.timeField = timeField;
         this.angleLabel = angleLabel;
         this.magnitudeLabel = magnitudeLabel;
+        this.apexLabel = apexLabel;
     }
 
     public void updateForce(double x, double y) {
@@ -33,5 +36,6 @@ public class GravityController {
         yField.setText(String.valueOf(force.y()));
         angleLabel.setText("Angle: (Degrees):" + force.getDegrees());
         magnitudeLabel.setText("Magnitude: " + force.getMagnitude());
+        apexLabel.setText("Apex: " + force.getApex());
     }
 }

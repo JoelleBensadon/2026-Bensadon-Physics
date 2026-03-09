@@ -49,4 +49,17 @@ class ForceTest {
         assertEquals(8.0, scaled.y(), tolerance);
     }
 
+    @Test
+    void apex() {
+
+        // Given
+        Force f = new Force(7, 5);
+
+        // When
+        double apex = f.getApex();
+
+        // Then
+        assertEquals(1.2755102040816326, apex, tolerance);
+    }
+
 }

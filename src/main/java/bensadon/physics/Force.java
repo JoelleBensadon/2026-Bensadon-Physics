@@ -47,4 +47,8 @@ public record Force(double x, double y) {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    public double getApex() {
+        return (y * y) / (2 * 9.8);
+    }
 }

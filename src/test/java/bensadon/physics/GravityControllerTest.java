@@ -19,9 +19,10 @@ class GravityControllerTest {
         doReturn("5").when(timeField).getText();
         JLabel angleLabel = mock();
         JLabel magnitudeLabel = mock();
+        JLabel apexLabel = mock();
 
         GravityController controller = new GravityController(
-                gravityComponent, xField, yField, timeField, angleLabel, magnitudeLabel
+                gravityComponent, xField, yField, timeField, angleLabel, magnitudeLabel, apexLabel
         );
 
         // When
@@ -32,7 +33,8 @@ class GravityControllerTest {
         verify(gravityComponent).setTime(5);
         verify(xField).setText("7.0");
         verify(yField).setText("5.0");
-        verify(angleLabel).setText("Angle: (Degrees):35.53767779197438 ");
+        verify(angleLabel).setText("Angle: (Degrees):35.53767779197438");
         verify(magnitudeLabel).setText("Magnitude: 8.602325267042627");
+        verify(apexLabel).setText("Apex: 1.2755102040816326");
     }
 }
