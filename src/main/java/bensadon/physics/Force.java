@@ -38,7 +38,9 @@ public record Force(double x, double y) {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Force force = (Force) o;
         return Double.compare(x, force.x) == 0 && Double.compare(y, force.y) == 0;
     }
