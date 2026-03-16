@@ -36,14 +36,13 @@ public class GravityComponent extends JComponent {
         g.translate(0, getHeight());
         //for (double i = 0; i < time; i += 0.001) {
         p.apply(0.01);
-        g.fillOval((int) p.getX(), (int) -p.getY(), 10, 10);
-        // }
+        g.fillOval((int) p.getX() - 5, (int) -p.getY() - 5, 10, 10);        // }
         double apexX = force.x() * (force.y() / 9.8);
         double apexY = force.getApex();
 
         g.setColor(Color.RED);
         g.drawOval((int) apexX - 5, (int) -apexY - 5, 10, 10);
-        
+
         g.setColor(Color.green);
         g.drawLine(0, 0, (int) force.x(), (int) -force.y());
     }
