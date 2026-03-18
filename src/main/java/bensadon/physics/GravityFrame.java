@@ -7,11 +7,11 @@ import java.awt.event.*;
 public class GravityFrame extends JFrame {
 
     public GravityFrame() {
-        setSize(300, 400);
+        setSize(800, 600);
         setTitle("Gravity Frames");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        setLayout(new BorderLayout());
+        setLayout(new GridBagLayout());
 
         final JLabel xLabel = new JLabel("Force x");
         JTextField xField = new JTextField("37.0365");
@@ -77,24 +77,76 @@ public class GravityFrame extends JFrame {
                 );
             }
         });
-        JPanel northPanel = new JPanel();
-        northPanel.add(new JLabel("ForceX"));
-        northPanel.add(xField);
+        GridBagConstraints constraints;
 
-        northPanel.add(new JLabel("ForceY"));
-        northPanel.add(yField);
+        constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        add(new JLabel("ForceX"), constraints);
 
-        northPanel.add(new JLabel("Time"));
-        northPanel.add(timeField);
+        constraints = new GridBagConstraints();
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        constraints.weightx = 0.1;
+        constraints.fill = GridBagConstraints.CENTER;
+        add(xField, constraints);
 
-        northPanel.add(button);
-        northPanel.add(angleLabel);
-        northPanel.add(magnitudeLabel);
-        northPanel.add(apexLabel);
+        constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        add(new JLabel("ForceY"), constraints);
 
-        add(northPanel, BorderLayout.NORTH);
-        add(gravityComponent, BorderLayout.CENTER);
+        constraints = new GridBagConstraints();
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        constraints.fill = GridBagConstraints.CENTER;
+        add(yField, constraints);
 
+        constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        add(new JLabel("Time"), constraints);
+
+        constraints = new GridBagConstraints();
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+        constraints.fill = GridBagConstraints.CENTER;
+        add(timeField, constraints);
+
+        constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.gridwidth = 2;
+        add(angleLabel, constraints);
+
+        constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        constraints.gridwidth = 2;
+        add(magnitudeLabel, constraints);
+
+        constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        constraints.gridwidth = 2;
+        add(apexLabel, constraints);
+
+        constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 6;
+        constraints.anchor = GridBagConstraints.NORTH;
+        constraints.gridwidth = 2;
+
+        add(button, constraints);
+
+        constraints = new GridBagConstraints();
+        constraints.gridx = 2;
+        constraints.gridy = 0;
+        constraints.gridheight = 7;
+        constraints.weightx = 1;
+        constraints.weighty = 1;
+        constraints.fill = GridBagConstraints.BOTH;
+        add(gravityComponent, constraints);
 
         Runnable runnable = new Runnable() {
             @Override
